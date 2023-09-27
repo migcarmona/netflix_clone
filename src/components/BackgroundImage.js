@@ -1,11 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
+import background from '../images/PT-en-netflix-background.jpg'
 
 const BackgroundImage = () => {
   return (
     <BackgroundContainer>
-      <img src='https://res.cloudinary.com/ehizeex-shop/image/upload/v1668265236/NetflixApp/netflix-reuse-official_ntcjl2_wtrhhh.jpg'
-      alt='something went wrong'/>
+      <img src={background}
+      alt='no link'/>
     </BackgroundContainer>
   )
 }
@@ -14,7 +15,8 @@ const BackgroundContainer = styled.div`
   height: 100vh;
   width: 100vw;
   img {
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
   }`
 export default BackgroundImage

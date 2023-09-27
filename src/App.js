@@ -11,6 +11,7 @@ import Header from './components/Header';
 
 function App() {
   return (
+    <div>
     <BrowserRouter>
       <Routes>
         <Route exact path='/login' element={<LoginPage/>} />
@@ -21,6 +22,7 @@ function App() {
         <Route exact path='/movie' element={<MoviePage/>} />
      </Routes>
     </BrowserRouter>
+    </div>
   );
 }
 
