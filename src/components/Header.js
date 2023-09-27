@@ -25,7 +25,7 @@ const HeaderContainer = styled.div`
     img{
       height: 3rem;
       cursor: pointer;
-      padding-top: 2rem;
+      padding-top: 1rem;
     }
   }
   button {
