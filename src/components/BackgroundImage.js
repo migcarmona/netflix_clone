@@ -15,7 +15,7 @@ const BackgroundContainer = styled.div`
   height: 100vh;
   width: 100vw;
   img {
-    height: 100%;
+    height: auto;
     width: 100%;
     object-fit: cover;
   }`

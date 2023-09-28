@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import Header from '../components/Header'
 import BackgroundImage from '../components/BackgroundImage'
@@ -20,6 +20,11 @@ const LoginPage = () => {
               <input type='text' placeholder='Email or phone number' />
               <input type='text' placeholder='Password' />
               <button>Sign In</button>
+              <p>Remember me</p>
+              <p>Need help?</p>
+              <div className='after-form'>
+
+              </div>
             </div>
           </div>
         </div>
@@ -36,7 +41,7 @@ position: relative;
   top: 0;
   left: 0;
   background-color: rgba(0,0,0,0.5);
-  height: 100vh;
+  height: auto;
   width: 100vw;
   .login-form-wrapper{
     display: block;
@@ -51,38 +56,44 @@ position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgba(0,0,0,0.75);
+    background-color: rgba(0,0,0,0.8);
     width: 100%;
     max-width: 450px;
     min-width: 380px;
     min-height: 660px;
-    padding: 60px;
+    padding: 50px;
     margin-bottom: 90px;
     margin-top: 30px;
     color: white;
     border-radius: 4px;
     box-sizing: border-box;
     .container{
+      margin-top: -20px;
       display: block;
-      width: 100%;
+      width: 90%;
       .title{
         display: block;
       }
       input{
         position: relative;
+        margin-top: 10px;
         margin-bottom: 16px;
-        border-radius: 0.4rem;
+        border-radius: 0.3rem;
+        border: none;
         padding: 0.5rem 1rem;
         width: 90%;
-        height: 2.7rem;
+        height: 2.2rem;
         outline: none;
-        background-color: rgba(189,195,199,0.75);
-        color: rgba(239,239,240,1);
+        background-color: rgba(100,100,100,1);
+        color: rgba(133,133,133,1);
         font-size: medium;
+        ::placeholder{
+          color: white;
+        }
       }
       button{
         width: 100%;
-        height: 3.95rem;
+        height: 3rem;
         background-color: red;
         color: white;
         font-size: 1.5rem;
@@ -91,9 +102,14 @@ position: relative;
         cursor: pointer;
         border: none;
         font-weight: bold;
-        font-size: 1.25rem;
+        font-size: 1rem;
+        margin-top:25px;
+      }
+      p{
+        font-size: 14px;
+        cursor: pointer;
+
       }
     }
-} }
-`
+} }`
 export default LoginPage
