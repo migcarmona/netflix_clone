@@ -2,15 +2,36 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import Header from '../components/Header'
 import BackgroundImage from '../components/BackgroundImage'
+import { firebaseAuth } from '../utils/firebase-config'
+import { createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth'
+/* import { async } from '@firebase/util' */
+import { useNavigate } from 'react-router-dom'
 
 const SignUpPage = () => {
   const [showPassword, setShowPassword] = useState(false)
+  const [formValues, setFormValues] = useState({ email: '', password: '' })
+
+  const navigate = useNavigate()
+
+  const handleSignIn = async () => {
+    try {
+      const { email, password } = formValues
+      await createUserWithEmailAndPassword(firebaseAuth, email, password)
+    }
+    catch (error) {
+      console.log(error)
+    }
+  }
+
+ /*  onAuthStateChanged(firebaseAuth,(currentUser)=>{
+    if(currentUser) navigate('/')
+  }) */
 
   return (
     <Container>
-      <BackgroundImage/>
+      <BackgroundImage />
       <div className='content'>
-        <Header login/>
+        <Header login />
         <div className='body'>
           <div className='text'>
             <h1>Unlimited movies, TV shows and more</h1>
@@ -20,20 +41,28 @@ const SignUpPage = () => {
           <div className='form'>
             {
               showPassword ? (
-                <input type='password' placeholder='Password' name='password'/> 
-              ) : <input type='email' placeholder='Email address' name='email'/>
+                <input type='password' placeholder='Password' name='password'
+                  value={formValues.password}
+                  onChange={(e) => setFormValues({
+                    ...formValues, [e.target.name]: e.target.value
+                  })} />
+              ) : <input type='email' placeholder='Email address' name='email'
+                value={formValues.email}
+                onChange={(e) => setFormValues({
+                  ...formValues, [e.target.name]: e.target.value
+                })} />
             }
             {
               !showPassword ? (
-                <button onClick={()=>setShowPassword(true)}>Get Started</button>
-              ) : <button>Sign Up</button>
+                <button onClick={() => setShowPassword(true)}>Get Started</button>
+              ) : <button onClick={handleSignIn}>Sign Up</button>
             }
-            
+
           </div>
         </div>
       </div>
     </Container>
-   
+
   )
 }
 
@@ -75,7 +104,7 @@ position: relative;
   display: grid;
   width: 100%;
   max-width: 38rem;
-  grid-template-columns: ${({showPassword})=>showPassword ? "1fr 1fr" : "2fr 1fr"};
+  grid-template-columns: ${({ showPassword }) => showPassword ? "1fr 1fr" : "2fr 1fr"};
   input{
     color: white;
     padding: 1.25rem;

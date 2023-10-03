@@ -1,11 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth'
+import { useNavigate } from 'react-router-dom'
+import { async } from '@firebase/util';
+
 import styled from 'styled-components'
 import Header from '../components/Header'
 import BackgroundImage from '../components/BackgroundImage'
+import { firebaseAuth } from '../utils/firebase-config';
 
 
+const navigate = useNavigate
 
 const LoginPage = () => {
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const handleLogin = async () => {
+    try {
+      await signInWithEmailAndPassword(firebaseAuth, email, password)
+    }
+    catch (error) {
+      console.log(error)
+    }
+  }
+
+  onAuthStateChanged(firebaseAuth, (currentUser) => {
+    if (currentUser) navigate('/')
+  })
+
+
   return (
     <Wrapper>
       <BackgroundImage />
@@ -17,13 +41,13 @@ const LoginPage = () => {
               <div className='title'>
                 <h1>Sign In</h1>
               </div>
-              <input type='text' placeholder='Email or phone number' />
-              <input type='text' placeholder='Password' />
-              <button>Sign In</button>
-              <p>Remember me</p>
-              <p>Need help?</p>
+              <input type='text' placeholder='Email or phone number' onChange={(e) => setEmail(e.target.value)} value={email} />
+              <input type='text' placeholder='Password' onChange={(e) => setEmail(e.target.value)} value={password} />
+              <button onClick={handleLogin}>Sign In</button>
+              <p className='floatLeft'>Remember me</p>
+              <p className='floatRight'>Need help?</p>
               <div className='after-form'>
-
+                <p className='floatLeft'>New to Netflix? <span onClick={() => navigate('/signup')}>Sign up now</span>.</p>
               </div>
             </div>
           </div>
@@ -108,8 +132,13 @@ position: relative;
       p{
         font-size: 14px;
         cursor: pointer;
-
       }
+        .floatLeft{
+          float: left;
+        }
+        .floatRight{
+          float: right;
+        }
     }
 } }`
 export default LoginPage
