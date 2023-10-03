@@ -1,19 +1,20 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import Header from '../components/Header'
-import BackgroundImage from '../components/BackgroundImage'
 import { firebaseAuth } from '../utils/firebase-config'
 import { createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth'
-/* import { async } from '@firebase/util' */
-import { useNavigate } from 'react-router-dom'
+import { async } from '@firebase/util'
+import { useNavigate } from 'react-router-dom' 
+
+import Header from '../components/Header'
+import BackgroundImage from '../components/BackgroundImage'
 
 const SignUpPage = () => {
   const [showPassword, setShowPassword] = useState(false)
   const [formValues, setFormValues] = useState({ email: '', password: '' })
 
-  const navigate = useNavigate()
+  const navigate = useNavigate() 
 
-  const handleSignIn = async () => {
+  const handleSignUp = async() => {
     try {
       const { email, password } = formValues
       await createUserWithEmailAndPassword(firebaseAuth, email, password)
@@ -23,9 +24,9 @@ const SignUpPage = () => {
     }
   }
 
- /*  onAuthStateChanged(firebaseAuth,(currentUser)=>{
+  onAuthStateChanged(firebaseAuth,(currentUser)=>{
     if(currentUser) navigate('/')
-  }) */
+  }) 
 
   return (
     <Container>
@@ -55,7 +56,7 @@ const SignUpPage = () => {
             {
               !showPassword ? (
                 <button onClick={() => setShowPassword(true)}>Get Started</button>
-              ) : <button onClick={handleSignIn}>Sign Up</button>
+              ) : <button onClick={handleSignUp}>Sign Up</button>
             }
 
           </div>
