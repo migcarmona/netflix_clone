@@ -21,6 +21,7 @@ const SignUpPage = () => {
     }
     catch (error) {
       console.log(error)
+
     }
   }
 
@@ -52,7 +53,7 @@ const SignUpPage = () => {
                 onChange={(e) => setFormValues({
                   ...formValues, [e.target.name]: e.target.value
                 })} />
-            }
+            }<p className='error'>{}</p>
             {
               !showPassword ? (
                 <button onClick={() => setShowPassword(true)}>Get Started</button>

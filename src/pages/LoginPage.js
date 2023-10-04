@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
-/* import { async } from '@firebase/util'; */
+import { async } from '@firebase/util';
 import styled from 'styled-components'
 import { firebaseAuth } from '../utils/firebase-config';
 
@@ -10,12 +10,12 @@ import BackgroundImage from '../components/BackgroundImage'
 
 
 
-const navigate = useNavigate
-
 const LoginPage = () => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
+  const navigate = useNavigate()
 
   const handleLogin = async () => {
     try {
@@ -26,9 +26,9 @@ const LoginPage = () => {
     }
   }
 
-  onAuthStateChanged(firebaseAuth, (currentUser) => {
-    if (currentUser) navigate('/')
-  })
+   onAuthStateChanged(firebaseAuth, (currentUser) => {
+    if (currentUser) navigate('/');
+  }) 
 
 
   return (
@@ -42,13 +42,13 @@ const LoginPage = () => {
               <div className='title'>
                 <h1>Sign In</h1>
               </div>
-              <input type='text' placeholder='Email or phone number' onChange={(e) => setEmail(e.target.value)} value={email} />
-              <input type='text' placeholder='Password' onChange={(e) => setPassword(e.target.value)} value={password} />
+              <input type='email' placeholder='Email or phone number' onChange={(e) => setEmail(e.target.value)} value={email} />
+              <input type='password' placeholder='Password' onChange={(e) => setPassword(e.target.value)} value={password} />
               <button onClick={handleLogin}>Sign In</button>
               <p className='floatLeft'>Remember me</p>
               <p className='floatRight'>Need help?</p>
               <div className='after-form'>
-                <p className='floatLeft'>New to Netflix? <span onClick={() => navigate('/signup')}>Sign up now</span>.</p>
+                <p className='floatLeft'>New to Netflix? <span >Sign up now</span>.</p>
               </div>
             </div>
           </div>
@@ -65,9 +65,10 @@ position: relative;
   position: absolute;
   top: 0;
   left: 0;
-  background-color: rgba(0,0,0,0.5);
-  height: auto;
+  background-color: rgba(0,0,0,0.4);
+  height: 100vw;
   width: 100vw;
+  object-fit: cover;
   .login-form-wrapper{
     display: block;
     max-width: 450px;
@@ -110,7 +111,7 @@ position: relative;
         height: 2.2rem;
         outline: none;
         background-color: rgba(100,100,100,1);
-        color: rgba(133,133,133,1);
+        color: white;
         font-size: medium;
         ::placeholder{
           color: white;
@@ -129,6 +130,9 @@ position: relative;
         font-weight: bold;
         font-size: 1rem;
         margin-top:25px;
+        :active{
+          opacity: 0.8;
+        }
       }
       p{
         font-size: 14px;
