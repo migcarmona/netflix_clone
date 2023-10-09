@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import Header from '../components/Header'
 import ageUltron from '../images/age-of-ultron.png'
+import TopNav from '../components/TopNav'
 
 const Netflix = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -14,7 +14,7 @@ const Netflix = () => {
 
   return (
     <div className='hero'>
-      <Header/>
+      <TopNav isScrolled={isScrolled}/>
       <img alt='no connection' src={ageUltron}/>
       <img alt='no connection' src={ageUltron}/>
       <img alt='no connection' src={ageUltron}/>

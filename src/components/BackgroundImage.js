@@ -13,11 +13,12 @@ const BackgroundImage = () => {
 
 const BackgroundContainer = styled.div`
   height: 100vh;
-  width: 100vw;
+  overflow: hidden;
+  object-fit: cover;
+  z-index: -1;
+  display: block;
   img {
-    height: auto;
-    width: auto;
-    object-fit: cover;
-    overflow: auto;
+    min-height: 100%;
+    min-width: 100%;
   }`
 export default BackgroundImage

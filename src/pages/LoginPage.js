@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
 import { async } from '@firebase/util';
@@ -26,9 +26,10 @@ const LoginPage = () => {
     }
   }
 
+  useEffect(()=>{
    onAuthStateChanged(firebaseAuth, (currentUser) => {
     if (currentUser) navigate('/');
-  }) 
+  })}, [''])
 
 
   return (
@@ -66,13 +67,12 @@ position: relative;
   top: 0;
   left: 0;
   background-color: rgba(0,0,0,0.4);
-  height: 100vw;
-  width: 100vw;
-  object-fit: cover;
+  height: 100%;
+  width: 100%;
+ 
   .login-form-wrapper{
     display: block;
     max-width: 450px;
-    min-height: 100vh;
     margin-top: 50px;
     font-family: Netflix Sans,Helvetica Neue,Segoe UI,Roboto,Ubuntu,sans-serif;
     margin: 0 auto 0;
@@ -83,7 +83,7 @@ position: relative;
     flex-direction: column;
     align-items: center;
     background-color: rgba(0,0,0,0.8);
-    width: 100%;
+   
     max-width: 450px;
     min-width: 380px;
     min-height: 660px;
@@ -94,11 +94,12 @@ position: relative;
     border-radius: 4px;
     box-sizing: border-box;
     .container{
-      margin-top: -20px;
+      margin-top: -10px;
       display: block;
       width: 90%;
       .title{
         display: block;
+        margin-bottom: 1rem;
       }
       input{
         position: relative;
@@ -107,8 +108,8 @@ position: relative;
         border-radius: 0.3rem;
         border: none;
         padding: 0.5rem 1rem;
-        width: 90%;
-        height: 2.2rem;
+        width: 100%;
+        height: 2.8rem;
         outline: none;
         background-color: rgba(100,100,100,1);
         color: white;
@@ -137,6 +138,7 @@ position: relative;
       p{
         font-size: 14px;
         cursor: pointer;
+        margin-top: 1rem;
       }
         .floatLeft{
           float: left;
