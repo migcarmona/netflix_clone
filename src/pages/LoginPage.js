@@ -29,7 +29,7 @@ const LoginPage = () => {
   useEffect(()=>{
    onAuthStateChanged(firebaseAuth, (currentUser) => {
     if (currentUser) navigate('/');
-  })}, [''])
+  })}, [])
 
 
   return (
