@@ -1,12 +1,16 @@
 import React, { useState } from 'react'
 import ageUltron from '../images/age-of-ultron.png'
 import TopNav from '../components/TopNav'
+import { useNavigate } from 'react-router-dom'
 
 import styled from 'styled-components'
-import { AiOutlineInfo, AiOutlinePlayCircle } from 'react-icons/ai'
+import { AiOutlineInfoCircle } from 'react-icons/ai'
+import {FaPlay} from 'react-icons/fa'
 
 const Netflix = () => {
   const [isScrolled, setIsScrolled] = useState(false)
+
+  const navigate = useNavigate()
 
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true)
@@ -26,8 +30,8 @@ const Netflix = () => {
           <p>Qui, qua, questra, na tua testa. Tal não é a força do Iron Man, com o seu fato super especial de corrida, do tipo super-carapau 3500 mega-nice.</p>
         </div>
         <div className='buttons'>
-          <button className='playBtn'>{AiOutlinePlayCircle} Play</button>
-          <button className='moreBtn'>More info</button>
+          <button onClick={()=>navigate('player')} className='playBtn'><FaPlay/> Play</button>
+          <button className='moreBtn'><AiOutlineInfoCircle/> More info</button>
         </div>
       </div>
       </div>
