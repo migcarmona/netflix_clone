@@ -65,7 +65,24 @@ const Card = () => {
 }
 
 const CardContainer = styled.div`
-
+max-width: 230px;
+width: 230px;
+height: 100%;
+cursor: pointer;
+position: relative;
+background-color: red;
+img{
+    border-radius: 0.2rem;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+.hover{
+    z-index: 99;
+    height: max-content;
+    width: 20rem;
+    position: absolute;
+}
 `
 
 export default Card

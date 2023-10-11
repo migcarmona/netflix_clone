@@ -18,7 +18,7 @@ const TopNav = ({ isScrolled }) => {
 
   const navigate = useNavigate()
 
-  useEffect((navigate) => {
+  useEffect(() => {
     onAuthStateChanged(firebaseAuth, (currentUser) => {
       if (!currentUser) navigate('/login');
     }) 
