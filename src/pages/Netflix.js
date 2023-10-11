@@ -44,7 +44,7 @@ const Netflix = () => {
 }
 
 const HeroContainer = styled.div`
-
+min-height: 1500px;
 .background-image{
   filter: brightness(40%);
   background-image: linear-gradient(to left, black, white);

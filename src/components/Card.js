@@ -82,6 +82,34 @@ img{
     height: max-content;
     width: 20rem;
     position: absolute;
+    top: -18vh;
+    left: 0;
+    border-radius: 0.2rem;
+    border: 0.1rem solid grey;
+    background-color: #181818;
+    transition: 0.3s ease-out;
+    .image-video-wrapper{
+        position: relative;
+        height: 140px;
+        img{
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 0.3rem;
+            top: 0;
+            z-index: 4;
+            position: absolute;
+        }
+        video {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 0.3rem;
+            top: 0;
+            z-index: 4;
+            position: absolute;
+        }
+    }
 }
 `
 
