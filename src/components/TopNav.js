@@ -11,14 +11,14 @@ const TopNav = ({ isScrolled }) => {
 
   const navlinks = [
     { name: "Home", link: '/' },
-    { name: "Tv Show", link: '/tv' },
+    { name: "Tv Shows", link: '/tv' },
     { name: "My List", link: '/mylist' },
     { name: "Movies", link: '/movies' }
   ]
 
   const navigate = useNavigate()
 
-  useEffect(() => {
+  useEffect((navigate) => {
     onAuthStateChanged(firebaseAuth, (currentUser) => {
       if (!currentUser) navigate('/login');
     }) 

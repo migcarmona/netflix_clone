@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import ageUltron from '../images/age-of-ultron.png'
 import TopNav from '../components/TopNav'
 import { useNavigate } from 'react-router-dom'
+import Card from '../components/Card'
 
 import styled from 'styled-components'
 import { AiOutlineInfoCircle } from 'react-icons/ai'
@@ -26,8 +27,9 @@ const Netflix = () => {
       <img className='background-image' alt='no connection' src={ageUltron} />
       <div className='container'>
         <div className='title'>
-          <h1>Iron Man</h1>
-          <p>Qui, qua, questra, na tua testa. Tal não é a força do Iron Man, com o seu fato super especial de corrida, do tipo super-carapau 3500 mega-nice.</p>
+          <h1>Avengers</h1>
+          <h2>Age of Ultron</h2>
+          <p>Super-heróis fantásticos mega-fortes. Tal não é a força do Iron Man, com o seu fato super especial de corrida, do tipo super-carapau 3500 mega-nice. Ou então a super-força do super-Hulk super-forte verde que se farta, que te parte os dentinhos todos. {'\n'}Clica no Play e descobre esta Avengeravilha.</p>
         </div>
         <div className='buttons'>
           <button onClick={()=>navigate('player')} className='playBtn'><FaPlay/> Play</button>
@@ -35,7 +37,9 @@ const Netflix = () => {
         </div>
       </div>
       </div>
+      <Card/>
     </HeroContainer >
+    
   )
 }
 
@@ -62,7 +66,15 @@ const HeroContainer = styled.div`
         background: -webkit-linear-gradient(#eee, rgb(128, 13, 13));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        
+      }
+      h2{
+        margin-left: 3.5rem;
+        text-transform: uppercase;
+        background: -webkit-linear-gradient(#eee, #000);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 2rem;
+        margin-top: -0.5rem;
       }
       p{
         margin-bottom: 50px;
