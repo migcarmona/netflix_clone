@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import styled from 'styled-components'
-import { IoPlayCircleSharp } from "react-icons/io5";
+import {FaPlay} from 'react-icons/fa'
 import { AiOutlinePlus } from "react-icons/ai";
 import { RiThumbUpFill, RiThumbDownFill } from "react-icons/ri";
 import { BiChevronDown } from "react-icons/bi";
-import { BsCheck } from "react-icons/bs";
+import { MdRemove } from "react-icons/md";
 
 const Card = () => {
 
@@ -36,13 +36,13 @@ const Card = () => {
                         <h3 className='movieName' onClick={()=>navigate('/player')}>Red Notice</h3>
                         <div className='icons'>
                             <div className='controls'>
-                                <IoPlayCircleSharp
+                                <FaPlay
                                 title='play'
                                 onClick={()=>navigate('/player')}/>
                                 <RiThumbUpFill title='like'/>
                                 <RiThumbDownFill title='dislike'/>
                                 <AiOutlinePlus title='Add to my list'/>
-                                <BsCheck title='Remove from my list'/>
+                                <MdRemove title='Remove from my list'/>
                             </div>
                             <div className='info'>
                                 <BiChevronDown title='More Info'/>
@@ -87,7 +87,7 @@ img{
     border-radius: 0.2rem;
     border: 0.1rem solid grey;
     background-color: #181818;
-    transition: 0.3s ease-out;
+    transition: 3s ease-in-out;
     .image-video-wrapper{
         position: relative;
         height: 140px;
@@ -108,8 +108,34 @@ img{
             top: 0;
             z-index: 4;
             position: absolute;
+            transition: 3s ease-in-out;
         }
     }
+    .info-container{
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        gap: 0.5rem;
+    }
+    .icons{
+        display: flex;
+        justify-content: space-between;
+        
+    }
+    svg{
+        color: white;
+        padding: 0.6rem;
+        border: 0.1rem solid white;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: 300ms ease-in-out;
+        font-size: 40px;
+        margin: 2px;
+        &:hover{
+            color: #b8b8b8;
+        }
+
+        }
 }
 `
 
