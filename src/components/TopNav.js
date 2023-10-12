@@ -47,7 +47,7 @@ const TopNav = ({ isScrolled }) => {
         </ul>
         <div className='rightSide'>
           <button onClick={()=>signOut(firebaseAuth)}>
-            <AiOutlineLogout />
+            <AiOutlineLogout />Logout
           </button>
         </div>
       </nav>
@@ -125,6 +125,7 @@ const NavContainer = styled.div`
       &:focus{
         outline: none;
       }
+      
       svg{
         color: white;
         font-size: 2rem;
