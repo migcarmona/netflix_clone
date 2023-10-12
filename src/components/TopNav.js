@@ -125,6 +125,7 @@ const NavContainer = styled.div`
       &:focus{
         outline: none;
       }
+      
       svg{
         color: white;
         font-size: 2rem;
