@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import styled from 'styled-components'
-import {FaPlay} from 'react-icons/fa'
+import { IoPlayCircleSharp } from "react-icons/io5";
 import { AiOutlinePlus } from "react-icons/ai";
 import { RiThumbUpFill, RiThumbDownFill } from "react-icons/ri";
 import { BiChevronDown } from "react-icons/bi";
@@ -28,32 +28,41 @@ const Card = () => {
                             alt='movie poster'
                             onClick={() => navigate('/player')}
                         />
-                        <video src='https://res.cloudinary.com/ehizeex-shop/video/upload/v1668377666/NetflixApp/Action_mlw9wx.mp4'
-                            autoPlay loop controls
+                         <video src='https://res.cloudinary.com/ehizeex-shop/video/upload/v1668377666/NetflixApp/Action_mlw9wx.mp4'
+                            autoPlay loop controls delay
                         />
                     </div>
                     <div className='info-container'>
-                        <h3 className='movieName' onClick={()=>navigate('/player')}>Red Notice</h3>
+                        <h3 className='movieName' onClick={() => navigate('/player')}>Black Adam</h3>
                         <div className='icons'>
                             <div className='controls'>
-                                <FaPlay
-                                title='play'
-                                onClick={()=>navigate('/player')}/>
-                                <RiThumbUpFill title='like'/>
-                                <RiThumbDownFill title='dislike'/>
-                                <AiOutlinePlus title='Add to my list'/>
-                                <MdRemove title='Remove from my list'/>
+                                <div className='nocircle'>
+                                <IoPlayCircleSharp
+                                    title='play'
+                                    onClick={() => navigate('/player')} />
+                                </div>
+                              <div className='circle'>
+                              <RiThumbUpFill title='like' />
+                              </div>
+                              <div className='circle'>
+                              <RiThumbDownFill title='dislike' />
+                              </div>
+                              <div className='circle'>
+                              <AiOutlinePlus title='Add to my list' />
+                              </div>
+                              <div className='circle'>
+                              <MdRemove title='Remove from my list' />
+                              </div>
                             </div>
                             <div className='info'>
-                                <BiChevronDown title='More Info'/>
+                                <BiChevronDown title='More Info' />
                             </div>
                         </div>
                         <div className='genre'>
                             <ul>
                                 <li>Action</li>
-                                <li>Action</li>
-                                <li>Action</li>
-                                <li>Action</li>
+                                <li>Hero</li>
+                                <li>Fiction</li>
                             </ul>
                         </div>
                     </div>
@@ -65,6 +74,7 @@ const Card = () => {
 }
 
 const CardContainer = styled.div`
+margin: 1rem;
 max-width: 230px;
 width: 230px;
 height: 100%;
@@ -84,16 +94,16 @@ img{
     position: absolute;
     top: -18vh;
     left: 0;
-    border-radius: 0.2rem;
-    border: 0.1rem solid grey;
+    border-radius: 0.4rem;
+    border: none;
     background-color: #181818;
-    transition: 3s ease-in-out;
+    -webkit-transition: 2s ease-in-out;
     .image-video-wrapper{
         position: relative;
         height: 140px;
         img{
             width: 100%;
-            height: auto;
+            height: 100%;
             object-fit: cover;
             border-radius: 0.3rem;
             top: 0;
@@ -102,7 +112,7 @@ img{
         }
         video {
             width: 100%;
-            height: auto;
+            height: 100%;
             object-fit: cover;
             border-radius: 0.3rem;
             top: 0;
@@ -116,26 +126,49 @@ img{
         flex-direction: column;
         padding: 1rem;
         gap: 0.5rem;
+        .movieName{
+            color: white;
+        }
     }
     .icons{
         display: flex;
         justify-content: space-between;
-        
-    }
-    svg{
-        color: white;
-        padding: 0.6rem;
-        border: 0.1rem solid white;
-        border-radius: 50%;
-        cursor: pointer;
-        transition: 300ms ease-in-out;
-        font-size: 40px;
-        margin: 2px;
-        &:hover{
-            color: #b8b8b8;
+        .controls{
+            display: flex;
+            gap: 0.5rem;
         }
+        .circle{
+            border: 0.2rem solid white;
+            border-radius: 50%;
+        }
+        .nocircle{
 
         }
+        svg{
+            color: white;
+            cursor: pointer;
+            transition: 0.1s ease-in-out;
+            font-size: 40px;
+            &:hover{
+            color: #b8b8b8;
+            }
+        }
+    }
+    .genre{
+        display: flex;
+        color: white;
+        font-weight: 400;
+        ul{
+            display: flex;
+            gap: 1rem;
+            li{
+                padding-right: 0.7rem;
+                &:first-of-type{
+                    list-style-type: none;
+                }
+            }
+        }
+    }
 }
 `
 
