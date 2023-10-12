@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ageUltron from '../images/age-of-ultron.png'
 import TopNav from '../components/TopNav'
 import { useNavigate } from 'react-router-dom'
@@ -6,7 +6,7 @@ import Card from '../components/Card'
 
 import styled from 'styled-components'
 import { AiOutlineInfoCircle } from 'react-icons/ai'
-import {FaPlay} from 'react-icons/fa'
+import { FaPlay } from 'react-icons/fa'
 
 const Netflix = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -18,28 +18,32 @@ const Netflix = () => {
     return () => (window.onscroll = null)
   }
 
+  useEffect(() => {
+    document.title = 'Home - Netflix Clone'
+  }, [])
+
   console.log(isScrolled)
 
   return (
     <HeroContainer>
       <div className='hero'>
-      <TopNav isScrolled={isScrolled} />
-      <img className='background-image' alt='no connection' src={ageUltron} />
-      <div className='container'>
-        <div className='title'>
-          <h1>Avengers</h1>
-          <h2>Age of Ultron</h2>
-          <p>Super-heróis fantásticos mega-fortes. Tal não é a força do Iron Man, com o seu fato super especial de corrida, do tipo super-carapau 3500 mega-nice. Ou então a super-força do super-Hulk super-forte verde que se farta, que te parte os dentinhos todos. {'\n'}Clica no Play e descobre esta Avengeravilha.</p>
-        </div>
-        <div className='buttons'>
-          <button onClick={()=>navigate('player')} className='playBtn'><FaPlay/> Play</button>
-          <button className='moreBtn'><AiOutlineInfoCircle/> More info</button>
+        <TopNav isScrolled={isScrolled} />
+        <img className='background-image' alt='no connection' src={ageUltron} />
+        <div className='container'>
+          <div className='title'>
+            <h1>Avengers</h1>
+            <h2>Age of Ultron</h2>
+            <p>Super-heróis fantásticos mega-fortes. Tal não é a força do Iron Man, com o seu fato super especial de corrida, do tipo super-carapau 3500 mega-nice. Ou então a super-força do super-Hulk super-forte verde que se farta, que te parte os dentinhos todos. {'\n'}Clica no Play e descobre esta Avengeravilha.</p>
+          </div>
+          <div className='buttons'>
+            <button onClick={() => navigate('player')} className='playBtn'><FaPlay /> Play</button>
+            <button className='moreBtn'><AiOutlineInfoCircle /> More info</button>
+          </div>
         </div>
       </div>
-      </div>
-      <Card/>
+      <Card />
     </HeroContainer >
-    
+
   )
 }
 
@@ -64,6 +68,7 @@ min-height: 1500px;
         text-transform: uppercase;
         font-size: 73px;
         background: -webkit-linear-gradient(#eee, rgb(128, 13, 13));
+        background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
@@ -71,6 +76,7 @@ min-height: 1500px;
         margin-left: 3.5rem;
         text-transform: uppercase;
         background: -webkit-linear-gradient(#eee, #000);
+        background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         margin-bottom: 2rem;
