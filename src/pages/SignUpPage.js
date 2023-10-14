@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { firebaseAuth } from '../utils/firebase-config'
 import { createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth'
+// eslint-disable-next-line
 import { async } from '@firebase/util'
 import { useNavigate } from 'react-router-dom' 
 

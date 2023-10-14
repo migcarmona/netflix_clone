@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom'
 
 import styled from 'styled-components'
 import { IoPlayCircleSharp } from "react-icons/io5";
-import { AiOutlinePlus } from "react-icons/ai";
-import { RiThumbUpFill, RiThumbDownFill } from "react-icons/ri";
+import { AiOutlinePlusCircle } from "react-icons/ai";
+import { SlLike, SlDislike } from "react-icons/sl";
 import { BiChevronDown } from "react-icons/bi";
-import { MdRemove } from "react-icons/md";
+/* import { MdRemove } from "react-icons/md"; */
 
 const Card = () => {
 
@@ -36,25 +36,25 @@ const Card = () => {
                         <h3 className='movieName' onClick={() => navigate('/player')}>Black Adam</h3>
                         <div className='icons'>
                             <div className='controls'>
-                                <div className='nocircle'>
+                                <div className='outline'>
                                 <IoPlayCircleSharp
                                     title='play'
                                     onClick={() => navigate('/player')} />
                                 </div>
-                              <div className='circle'>
-                              <RiThumbUpFill title='like' />
+                              <div className='nocircle'>
+                              <SlLike title='like' />
                               </div>
-                              <div className='circle'>
-                              <RiThumbDownFill title='dislike' />
+                              <div className='nocircle'>
+                              <SlDislike title='dislike' />
                               </div>
-                              <div className='circle'>
-                              <AiOutlinePlus title='Add to my list' />
+                              <div className='outline'>
+                              <AiOutlinePlusCircle title='Add to my list' />
                               </div>
-                              <div className='circle'>
+                              {/* <div className='circle'>
                               <MdRemove title='Remove from my list' />
-                              </div>
+                              </div> */}
                             </div>
-                            <div className='info'>
+                            <div className='nocircle'>
                                 <BiChevronDown title='More Info' />
                             </div>
                         </div>
@@ -97,6 +97,7 @@ img{
     border-radius: 0.4rem;
     border: none;
     background-color: #181818;
+    transition: 2s ease-in-out;
     -webkit-transition: 2s ease-in-out;
     .image-video-wrapper{
         position: relative;
@@ -133,22 +134,27 @@ img{
     .icons{
         display: flex;
         justify-content: space-between;
+        align-items: center;
         .controls{
             display: flex;
             gap: 0.5rem;
+            align-items: center;
         }
         .circle{
-            border: 0.2rem solid white;
+            border: 0.1rem solid white;
             border-radius: 50%;
+            font-size:30px;
         }
         .nocircle{
-
+            font-size:30px;
+        }
+        .outline{
+            font-size: 40px;
         }
         svg{
             color: white;
             cursor: pointer;
             transition: 0.1s ease-in-out;
-            font-size: 40px;
             &:hover{
             color: #b8b8b8;
             }

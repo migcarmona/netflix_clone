@@ -3,6 +3,8 @@ import ageUltron from '../images/age-of-ultron.png'
 import TopNav from '../components/TopNav'
 import { useNavigate } from 'react-router-dom'
 import Card from '../components/Card'
+import {useDispatch} from 'react-redux'
+import { getGenres } from '../store'
 
 import styled from 'styled-components'
 import { AiOutlineInfoCircle } from 'react-icons/ai'
@@ -12,6 +14,12 @@ const Netflix = () => {
   const [isScrolled, setIsScrolled] = useState(false)
 
   const navigate = useNavigate()
+
+  const dispatch = useDispatch()
+
+  useEffect(()=>{
+    dispatch(getGenres())
+  },[dispatch])
 
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true)

@@ -22,7 +22,7 @@ const TopNav = ({ isScrolled }) => {
     onAuthStateChanged(firebaseAuth, (currentUser) => {
       if (!currentUser) navigate('/login');
     }) 
-  }, [])
+  }, [navigate])
   
 
 
@@ -47,7 +47,7 @@ const TopNav = ({ isScrolled }) => {
         </ul>
         <div className='rightSide'>
           <button onClick={()=>signOut(firebaseAuth)}>
-            <AiOutlineLogout />Logout
+            <AiOutlineLogout />Sign Out
           </button>
         </div>
       </nav>
@@ -114,13 +114,17 @@ const NavContainer = styled.div`
       display: flex;
       align-items: center;
       gap: 1rem;
+      padding: 1rem;
       button{
+        display: flex;
         background-color: red;
         border: none;
         cursor: pointer;
-        border-radius: 50%;
-        padding: 0.3rem;
-        
+        border-radius: 0.3rem;
+        padding: 0.6rem;
+        color: white;
+        font-size: 1rem;
+        align-items: center;
       }
       &:focus{
         outline: none;
@@ -128,8 +132,10 @@ const NavContainer = styled.div`
       
       svg{
         color: white;
-        font-size: 2rem;
+        font-size: 1.2rem;
         display: flex;
+        margin-right: 0.3rem;
+        align-items: center;
       }
       }
     

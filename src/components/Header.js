@@ -10,10 +10,10 @@ const Header = (props) => {
       <div className='logo'>
         <img alt='no link' src={netflixLogo}/>
       </div>
-      {/* <button onClick={()=>navigate(props.login ? '/login' : '/signup')}>
+       <button onClick={()=>navigate(props.login ? '/login' : '/signup')}>
         {props.login ? 'Log In' : 'Sign Up'}
-      </button> */}
-      <button onClick={()=>navigate('/login')}>Sign In</button>
+      </button> 
+      {/* <button onClick={()=>navigate('/login')}>Sign In</button> */}
     </HeaderContainer>
   )
 }

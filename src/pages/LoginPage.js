@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
+// eslint-disable-next-line
 import { async } from '@firebase/util';
 import styled from 'styled-components'
 import { firebaseAuth } from '../utils/firebase-config';
@@ -17,7 +18,7 @@ const LoginPage = () => {
 
   const navigate = useNavigate()
 
-  const handleLogin = async () => {
+  const handleLogin = async() => {
     try {
       await signInWithEmailAndPassword(firebaseAuth, email, password)
     }
@@ -29,7 +30,7 @@ const LoginPage = () => {
   useEffect(()=>{
    onAuthStateChanged(firebaseAuth, (currentUser) => {
     if (currentUser) navigate('/');
-  })}, [])
+  })}, [navigate])
 
 
   return (
