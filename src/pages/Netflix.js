@@ -3,8 +3,8 @@ import ageUltron from '../images/age-of-ultron.png'
 import TopNav from '../components/TopNav'
 import { useNavigate } from 'react-router-dom'
 import Card from '../components/Card'
-import {useDispatch} from 'react-redux'
-import { getGenres } from '../store'
+import {useDispatch, useSelector} from 'react-redux'
+import { fetchMovies, getGenres } from '../store'
 
 import styled from 'styled-components'
 import { AiOutlineInfoCircle } from 'react-icons/ai'
@@ -15,11 +15,21 @@ const Netflix = () => {
 
   const navigate = useNavigate()
 
+  const movies = useSelector((state)=> state.netflix.movies)
+
+  const genresLoaded = useSelector((state)=>state.netflix.genresLoaded)
+
   const dispatch = useDispatch()
 
   useEffect(()=>{
     dispatch(getGenres())
-  },[dispatch])
+  })
+
+  useEffect(()=>{
+    if (genresLoaded){
+      dispatch(fetchMovies({type: 'all'}))
+    }
+  })
 
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true)
@@ -28,9 +38,9 @@ const Netflix = () => {
 
   useEffect(() => {
     document.title = 'Home - Netflix Clone'
-  }, [])
+  })
 
-  console.log(isScrolled)
+  console.log(movies)
 
   return (
     <HeroContainer>

@@ -22,7 +22,7 @@ const TopNav = ({ isScrolled }) => {
     onAuthStateChanged(firebaseAuth, (currentUser) => {
       if (!currentUser) navigate('/login');
     }) 
-  }, [navigate])
+  })
   
 
 
