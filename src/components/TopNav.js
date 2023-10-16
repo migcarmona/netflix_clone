@@ -34,6 +34,7 @@ const TopNav = ({ isScrolled }) => {
             <img src={logo} alt='logo'></img>
           </div>
         </div>
+        <div>
         <ul className='links'>
           {
             navlinks.map(({ name, link }) => {
@@ -45,6 +46,8 @@ const TopNav = ({ isScrolled }) => {
             })
           }
         </ul>
+        </div>
+        
         <div className='rightSide'>
           <button onClick={()=>signOut(firebaseAuth)}>
             <AiOutlineLogout />Sign Out
@@ -95,12 +98,14 @@ const NavContainer = styled.div`
       }
     }
     .links{
+      
         display: flex;
         text-align: left;
         float: left;
         gap: 3rem;
         padding: 1rem;
-        margin-left: -45rem;
+        margin-right: 25rem;
+        margin-left: 3rem;
         li{
           list-style-type: none;
           a{

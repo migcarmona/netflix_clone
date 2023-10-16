@@ -27,7 +27,7 @@ const Netflix = () => {
 
   useEffect(()=>{
     if (genresLoaded){
-      dispatch(fetchMovies({type: 'all'}))
+      dispatch(fetchMovies({type: "all"}))
     }
   })
 
@@ -73,13 +73,15 @@ min-height: 1500px;
 }
 .hero{
   position: relative;
+
   img{
     height: auto;
     width: 100%;
   }
   .container{
     position: absolute;
-    bottom: 10rem;
+    top: 10rem;
+
     .title{
       h1{
         margin-left: 3.5rem;
