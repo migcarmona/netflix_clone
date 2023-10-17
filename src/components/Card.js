@@ -8,7 +8,7 @@ import { SlLike, SlDislike } from "react-icons/sl";
 import { BiChevronDown } from "react-icons/bi";
 /* import { MdRemove } from "react-icons/md"; */
 
-const Card = () => {
+const Card = (movieData) => {
 
     const [onHover, setOnHover] = useState(false)
     const navigate = useNavigate()
@@ -17,7 +17,7 @@ const Card = () => {
         <CardContainer
             onMouseEnter={() => setOnHover(true)}
             onMouseLeave={() => setOnHover(false)}>
-            <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaCor4AIV__zuNlgGZTSr424NdUudWBQKBrA&usqp=CAU'
+            <img src={`https://image.tmdb.org/t/p/w500${movieData.image}`}
                 alt='movie poster'
                 onClick={() => navigate('/player')}
             />

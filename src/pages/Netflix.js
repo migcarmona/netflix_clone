@@ -2,28 +2,28 @@ import React, { useEffect, useState } from 'react'
 import ageUltron from '../images/age-of-ultron.png'
 import TopNav from '../components/TopNav'
 import { useNavigate } from 'react-router-dom'
-import Card from '../components/Card'
 import {useDispatch, useSelector} from 'react-redux'
 import { fetchMovies, getGenres } from '../store'
 
 import styled from 'styled-components'
 import { AiOutlineInfoCircle } from 'react-icons/ai'
 import { FaPlay } from 'react-icons/fa'
+import SliderContainer from '../components/SliderContainer'
 
 const Netflix = () => {
   const [isScrolled, setIsScrolled] = useState(false)
 
   const navigate = useNavigate()
 
-  const movies = useSelector((state)=> state.netflix.movies)
+  const movies = useSelector((state)=>state.netflix.movies)
 
   const genresLoaded = useSelector((state)=>state.netflix.genresLoaded)
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(()=>{
     dispatch(getGenres())
-  })
+  },)
 
   useEffect(()=>{
     if (genresLoaded){
@@ -40,7 +40,7 @@ const Netflix = () => {
     document.title = 'Home - Netflix Clone'
   })
 
-  console.log(movies)
+
 
   return (
     <HeroContainer>
@@ -59,7 +59,7 @@ const Netflix = () => {
           </div>
         </div>
       </div>
-      <Card />
+      <SliderContainer movies={movies} />
     </HeroContainer >
 
   )
