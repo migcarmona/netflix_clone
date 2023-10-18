@@ -11,7 +11,7 @@ const TopNav = ({ isScrolled }) => {
 
   const navlinks = [
     { name: "Home", link: '/' },
-    { name: "Tv Shows", link: '/tv' },
+    { name: "Tv Shows", link: '/TvShow' },
     { name: "My List", link: '/mylist' },
     { name: "Movies", link: '/movies' }
   ]
@@ -71,7 +71,6 @@ const NavContainer = styled.div`
     top: 0;
     height: 4.8rem;
     width: 100%;
-    justify-content: space-between;
     position: fixed;
     z-index: 2;
     align-items: center;
@@ -84,6 +83,7 @@ const NavContainer = styled.div`
       display: flex;
       align-items: center;
       gap: 2rem;
+      justify-content: left;
    
       .logo{
         display: flex;
@@ -97,14 +97,13 @@ const NavContainer = styled.div`
         }
       }
     }
-    .links{
-      
+    .links{ 
         display: flex;
         text-align: left;
         float: left;
         gap: 3rem;
         padding: 1rem;
-        margin-right: 25rem;
+        margin-right: 47.5rem;
         margin-left: 3rem;
         li{
           list-style-type: none;
@@ -120,6 +119,8 @@ const NavContainer = styled.div`
       align-items: center;
       gap: 1rem;
       padding: 1rem;
+      
+      text-align: right;
       button{
         display: flex;
         background-color: red;
@@ -130,6 +131,7 @@ const NavContainer = styled.div`
         color: white;
         font-size: 1rem;
         align-items: center;
+        text-align: right;
       }
       &:focus{
         outline: none;

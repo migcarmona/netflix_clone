@@ -8,32 +8,37 @@ import { SlLike, SlDislike } from "react-icons/sl";
 import { BiChevronDown } from "react-icons/bi";
 /* import { MdRemove } from "react-icons/md"; */
 
-const Card = (movieData) => {
+const Card = ({movieData}) => {
 
     const [onHover, setOnHover] = useState(false)
     const navigate = useNavigate()
+
 
     return (
         <CardContainer
             onMouseEnter={() => setOnHover(true)}
             onMouseLeave={() => setOnHover(false)}>
             <img src={`https://image.tmdb.org/t/p/w500${movieData.image}`}
+               /*  src={`https://api.themoviedb.org/3/movie/${movieData.id}/images`} */
                 alt='movie poster'
                 onClick={() => navigate('/player')}
             />
             {onHover && (
                 <div className='hover'>
                     <div className='image-video-wrapper'>
-                        <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaCor4AIV__zuNlgGZTSr424NdUudWBQKBrA&usqp=CAU'
+                        <img src={`https://image.tmdb.org/t/p/w500${movieData.image}`}
                             alt='movie poster'
                             onClick={() => navigate('/player')}
                         />
-                         <video src='https://res.cloudinary.com/ehizeex-shop/video/upload/v1668377666/NetflixApp/Action_mlw9wx.mp4'
-                            autoPlay loop controls delay
+                        {setTimeout(()=>{
+                            <video src='https://res.cloudinary.com/ehizeex-shop/video/upload/v1668377666/NetflixApp/Action_mlw9wx.mp4'
+                            autoPlay loop controls
                         />
+                        })}
+                         
                     </div>
                     <div className='info-container'>
-                        <h3 className='movieName' onClick={() => navigate('/player')}>Black Adam</h3>
+                        <h3 className='movieName' onClick={() => navigate('/player')}>{movieData.name}</h3>
                         <div className='icons'>
                             <div className='controls'>
                                 <div className='outline'>
@@ -60,9 +65,9 @@ const Card = (movieData) => {
                         </div>
                         <div className='genre'>
                             <ul>
-                                <li>Action</li>
-                                <li>Hero</li>
-                                <li>Fiction</li>
+                                {movieData.genres.map((genres)=>
+                                <li>{genres}</li>
+                                )}
                             </ul>
                         </div>
                     </div>
@@ -74,13 +79,13 @@ const Card = (movieData) => {
 }
 
 const CardContainer = styled.div`
-margin: 1rem;
+margin: 0.2rem;
 max-width: 230px;
 width: 230px;
 height: 100%;
 cursor: pointer;
 position: relative;
-background-color: red;
+background-color: black;
 img{
     border-radius: 0.2rem;
     width: 100%;
