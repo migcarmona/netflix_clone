@@ -6,9 +6,10 @@ import { IoPlayCircleSharp } from "react-icons/io5";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { SlLike, SlDislike } from "react-icons/sl";
 import { BiChevronDown } from "react-icons/bi";
+import {BsChevronLeft, BsChevronRight} from 'react-icons/bs'
 /* import { MdRemove } from "react-icons/md"; */
 
-const Card = ({movieData}) => {
+export default React.memo(function Card({movieData}) { 
 
     const [onHover, setOnHover] = useState(false)
     const navigate = useNavigate()
@@ -76,7 +77,7 @@ const Card = ({movieData}) => {
             )}
         </CardContainer>
     )
-}
+});
 
 const CardContainer = styled.div`
 margin: 0.2rem;
@@ -182,5 +183,3 @@ img{
     }
 }
 `
-
-export default Card
