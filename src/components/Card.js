@@ -6,7 +6,6 @@ import { IoPlayCircleSharp } from "react-icons/io5";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { SlLike, SlDislike } from "react-icons/sl";
 import { BiChevronDown } from "react-icons/bi";
-import {BsChevronLeft, BsChevronRight} from 'react-icons/bs'
 /* import { MdRemove } from "react-icons/md"; */
 
 export default React.memo(function Card({movieData}) { 

@@ -30,20 +30,22 @@ const Container = styled.div`
 gap: 1rem;
 position: relative;
 padding: 1rem 0;
+margin-left: 50px;
 h1{
-  margin-left: 50px;
+  
   padding: 5px;
   font-size: 25px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   color: white;
 }
 .slider-wrapper{
+ 
   .slider{
     display: flex;
     width: max-content;
     transform: translateX(0px);
     transition: 1s ease-in-out;
-    margin-left: 50px;
+    
   }
   .slider-action{
     display: flex;
@@ -51,30 +53,32 @@ h1{
     align-items: center;
     position: absolute;
     z-index: 99;
-    height: 100%;
-    top: 2rem;
-    bottom: 0;
+    height: 130px;
+    width: 70px;
+    top: 3.6rem;
     width: 50px;
     transition: 1s ease-in-out;
-    svg{
-      color: white ;
-      font-size: 20px;
-      font-weight: 500;
+    svg {
+      color: white;
+      font-size: 10px;
+      height: 100%;
+      width: auto;
+      padding: 10px;
       cursor: pointer;
       opacity: 0;
+      background-image: linear-gradient(to right, black, transparent);
       &:hover{
         opacity: 1;
         transition: 0.3s ease-in-out;
       }
-    .left{
-      left: 0;
-      margin-left: 20px;
     }
-    .right{
-      right: 0;
-      margin-right: 20px;
-    }
-
-    }
+  }
+  .left{
+    left: 0;
+    
+  }
+  .right{
+    right: 0;
+    background-image: linear-gradient(to left, black, transparent);
   }
 }`
