@@ -1,24 +1,47 @@
-import React from 'react'
+import React, { useState, useRef } from 'react'
 import Card from './Card'
 import styled from 'styled-components'
 import {BsChevronLeft, BsChevronRight} from 'react-icons/bs'
 
 export default React.memo (function MovieSlider({ data, title }) {
+
+  const listRef = useRef();
+  
+  const [controlVisibility, setControlVisibility] = useState(false);
+
+  const [sliderPosition, setSliderPosition] = useState(0);
+
+  const sliderDirection = (direction)=>{
+    let distance = listRef.current.getBoundingClientRect().x -70;
+    if (direction === 'left' && sliderPosition > 0){
+      listRef.current.style.transform = `translateX:(${230 + distance}px)`
+      setSliderPosition(sliderPosition - 1)
+    }
+    if (direction === 'right' && sliderPosition < 4){
+      listRef.current.style.transform = `translateX:(${-230 + distance}px)`
+      setSliderPosition(sliderPosition + 1)
+    }
+};
+
   return (
-    <Container>
+    <Container 
+    controlVisibility = {controlVisibility}
+    onMouseEnter={()=>setControlVisibility(true)}
+    onMouseLeave={()=>setControlVisibility(false)}
+    >
       <h1>{title}</h1>
       <div className='slider-wrapper'>
-        <div className={`slider-action left`}>
-        <BsChevronLeft/>
+        <div className={`slider-action left ${!controlVisibility ? 'none' : ''}`}>
+        <BsChevronLeft onClick={()=>sliderDirection('left')}/>
         </div>
-        <div className='slider'>
+        <div className='slider' ref={listRef}>
           {data.map((movie, index) => {
             return <Card movieData={movie} index={index} key={movie.id} />
             })
           }
         </div>
-        <div className={`slider-action right`}>
-        <BsChevronRight/>
+        <div className={`slider-action right ${!controlVisibility ? 'none' : ''}`}>
+        <BsChevronRight onClick={()=>sliderDirection('right')}/>
         </div>
       </div>
 
@@ -56,21 +79,20 @@ h1{
     height: 130px;
     width: 70px;
     top: 3.6rem;
-    width: 50px;
+    width: 60px;
     transition: 1s ease-in-out;
     svg {
       color: white;
       font-size: 10px;
       height: 100%;
       width: auto;
-      padding: 10px;
+      padding: 15px;
       cursor: pointer;
-      opacity: 0;
       background-image: linear-gradient(to right, black, transparent);
-      &:hover{
+  /*     &:hover{
         opacity: 1;
         transition: 0.3s ease-in-out;
-      }
+      } */
     }
   }
   .left{
@@ -80,5 +102,9 @@ h1{
   .right{
     right: 0;
     background-image: linear-gradient(to left, black, transparent);
+  }
+  .none{
+    display: none;
+    transition: 0.3s ease-in-out;
   }
 }`
