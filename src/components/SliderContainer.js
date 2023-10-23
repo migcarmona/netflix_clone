@@ -8,6 +8,8 @@ const getMoviesBetween = (start, end) => {
     return movies.slice(start, end);
 }
 
+//console.log(getMoviesBetween(20,21))
+
   return (
     <SliderWrapper>
         <MovieSlider data={getMoviesBetween(0,10)} title="New Releases"/>
@@ -25,9 +27,6 @@ const getMoviesBetween = (start, end) => {
 const SliderWrapper = styled.div`
 height: max-content;
 margin-top: -125px;
-.slider {
-
-}
 `
 
 export default SliderContainer

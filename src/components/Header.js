@@ -9,6 +9,7 @@ const Header = (props) => {
     <HeaderContainer>
       <div className='logo'>
         <img alt='no link' src={netflixLogo}/>
+        <p className='clone'>clone</p>
       </div>
        <button onClick={()=>navigate(props.login ? '/login' : '/signup')}>
         {props.login ? 'Log In' : 'Sign Up'}
@@ -23,6 +24,11 @@ const HeaderContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 4rem;
+  .clone{
+    color: white;
+    margin-left: 10px;
+    font-style: italic;
+   }
   .logo{
     img{
       height: 3rem;

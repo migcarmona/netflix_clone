@@ -1,5 +1,5 @@
 import {API_KEY, TMDB_BASE_URL} from '../utils/constant.js';
-import {configureStore, createAsyncThunk, createSlice} from '@reduxjs/toolkit';
+import {configureStore, createAsyncThunk, createSlice,} from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const initialState = {
@@ -28,18 +28,16 @@ const arrayOfMovieData = (array, moviesArray, genres)=>{
             image: movie.backdrop_path,
             genres: movieGenres.slice(0,3)
     })
-    })
+})
 }
 
 const getMovieData = async (api, genres, paging = false)=>{
     const moviesArray = []
     for(let i = 1; moviesArray.length < 80 && i < 10; i++){
-        const {data: {results},} =
-        await axios.get(`${api}${paging ? `&page=${i}` : ''}`);
+        const {data: {results},} = await axios.get(`${api}${paging ? `&page=${i}` : ''}`);
         arrayOfMovieData (results, moviesArray, genres)
-        return moviesArray
     }
-    
+        return moviesArray    
 }
 
 export const fetchMovies = createAsyncThunk('netflix/trending', async ({type}, myThunk)=>{

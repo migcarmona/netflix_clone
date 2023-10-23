@@ -86,6 +86,7 @@ height: 100%;
 cursor: pointer;
 position: relative;
 background-color: black;
+
 img{
     border-radius: 0.2rem;
     width: 100%;

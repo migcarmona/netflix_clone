@@ -32,6 +32,7 @@ const TopNav = ({ isScrolled }) => {
         <div className='leftSide'>
           <div className='logo'>
             <img src={logo} alt='logo'></img>
+            <p className='clone'>clone</p>
           </div>
         </div>
         <div>
@@ -59,6 +60,12 @@ const TopNav = ({ isScrolled }) => {
 }
 
 const NavContainer = styled.div`
+  .clone{
+    color: white;
+    margin-left: 10px;
+    font-style: italic;
+  }
+
   .notScrolled{
     display: flex;
   }
@@ -76,8 +83,6 @@ const NavContainer = styled.div`
     align-items: center;
     transition: 0.3s ease-in-out;
     padding: 1rem;
-  
-    
 
     .leftSide{
       display: flex;
@@ -89,14 +94,15 @@ const NavContainer = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
+
         img{
         width: 6.5rem;
         height: auto;
         margin-left: 2.5rem;
-        
         }
       }
     }
+
     .links{ 
         display: flex;
         text-align: left;
@@ -105,22 +111,27 @@ const NavContainer = styled.div`
         padding: 1rem;
         margin-right: 47.5rem;
         margin-left: 3rem;
+        width: 100%;
+
         li{
           list-style-type: none;
           a{
             color: white;
             text-decoration: none;
-            
           }
         }
     }
+
     .rightSide {
       display: flex;
+      justify-content: center;
       align-items: center;
       gap: 1rem;
       padding: 1rem;
-      
       text-align: right;
+      position:absolute;
+      top:0;
+      right:0;
       button{
         display: flex;
         background-color: red;
@@ -130,7 +141,6 @@ const NavContainer = styled.div`
         padding: 0.6rem;
         color: white;
         font-size: 1rem;
-        align-items: center;
         text-align: right;
       }
       &:focus{

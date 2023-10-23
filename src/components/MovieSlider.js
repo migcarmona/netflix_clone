@@ -1,24 +1,24 @@
-import React, { useState, useRef } from 'react'
-import Card from './Card'
-import styled from 'styled-components'
-import {BsChevronLeft, BsChevronRight} from 'react-icons/bs'
+import React, { useState, useRef } from 'react';
+import Card from './Card';
+import styled from 'styled-components';
+import {BsChevronLeft, BsChevronRight} from 'react-icons/bs';
 
 export default React.memo (function MovieSlider({ data, title }) {
 
-  const listRef = useRef();
+  const listRef = useRef()
   
-  const [controlVisibility, setControlVisibility] = useState(false);
+  const [controlVisibility, setControlVisibility] = useState(false)
 
-  const [sliderPosition, setSliderPosition] = useState(0);
+  const [sliderPosition, setSliderPosition] = useState(0)
 
   const sliderDirection = (direction)=>{
-    let distance = listRef.current.getBoundingClientRect().x -70;
+    let distance = listRef.current.getBoundingClientRect().x -50;
     if (direction === 'left' && sliderPosition > 0){
-      listRef.current.style.transform = `translateX:(${230 + distance}px)`
+      listRef.current.style.transform = `translateX(${230 + distance}px)`
       setSliderPosition(sliderPosition - 1)
     }
     if (direction === 'right' && sliderPosition < 4){
-      listRef.current.style.transform = `translateX:(${-230 + distance}px)`
+      listRef.current.style.transform = `translateX(${-230 + distance}px)`
       setSliderPosition(sliderPosition + 1)
     }
 };
@@ -53,21 +53,24 @@ const Container = styled.div`
 gap: 1rem;
 position: relative;
 padding: 1rem 0;
-margin-left: 50px;
+caret-color: transparent;
 h1{
-  
   padding: 5px;
   font-size: 25px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   color: white;
+  margin-left: 50px;
 }
 .slider-wrapper{
- 
+  
+  caret-color: transparent;
   .slider{
     display: flex;
     width: max-content;
+    
     transform: translateX(0px);
-    transition: 1s ease-in-out;
+    transition: 0.4s ease-in-out;
+    margin-left: 50px;
     
   }
   .slider-action{
@@ -80,7 +83,8 @@ h1{
     width: 70px;
     top: 3.6rem;
     width: 60px;
-    transition: 1s ease-in-out;
+    transition: 0.4s ease-in-out;
+    background-image: linear-gradient(to right, black, transparent);
     svg {
       color: white;
       font-size: 10px;
@@ -88,7 +92,7 @@ h1{
       width: auto;
       padding: 15px;
       cursor: pointer;
-      background-image: linear-gradient(to right, black, transparent);
+   
   /*     &:hover{
         opacity: 1;
         transition: 0.3s ease-in-out;
